@@ -11,6 +11,8 @@ namespace Fiorello_API.Data
 
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Expert> Experts { get; set; }
+        public DbSet<Info> Infos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -22,6 +22,8 @@ builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IExpertService, ExpertService>();
+builder.Services.AddScoped<IInfoService, InfoService>();
 
 var app = builder.Build();
 

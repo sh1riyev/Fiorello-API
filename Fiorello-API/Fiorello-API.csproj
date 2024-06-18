@@ -36,6 +36,8 @@
     <None Remove="Services\" />
     <None Remove="Services\Interface\" />
     <None Remove="Helpers\EntityConfigurations\" />
+    <None Remove="DTOs\Experts\" />
+    <None Remove="DTOs\Infos\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -50,5 +52,7 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Interface\" />
     <Folder Include="Helpers\EntityConfigurations\" />
+    <Folder Include="DTOs\Experts\" />
+    <Folder Include="DTOs\Infos\" />
   </ItemGroup>
 </Project>

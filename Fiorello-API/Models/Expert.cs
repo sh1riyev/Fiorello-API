@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Fiorello_API.Models
 {
-    public class Experts : BaseEntity
+    public class Expert : BaseEntity
     {
         public string Image { get; set; }
         public string Name { get; set; }
