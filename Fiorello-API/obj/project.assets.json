@@ -2477,6 +2477,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper >= 13.0.1",
+      "Microsoft.EntityFrameworkCore >= 6.0.31",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.31",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.31",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.31",
@@ -2526,6 +2527,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[13.0.1, )"
+          },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[6.0.31, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
