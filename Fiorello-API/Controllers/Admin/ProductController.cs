@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Fiorello_API.Controllers.Admin
 {
-	public class ProductController :BaseController
-	{
+    public class ProductController : BaseController
+    {
         private readonly IProductService _service;
         private readonly IFileService _fileService;
         private readonly IMapper _mapper;
@@ -75,11 +75,40 @@ namespace Fiorello_API.Controllers.Admin
             var existCategory = await _categoryService.FindById((int)request.CategoryId);
             if (existCategory is null) return NotFound();
             if (id is null) return BadRequest();
-            var product = await _service.FindById((int)id);
-            if (product is null) return NotFound();
-            return Ok();
+            var existProduct = await _service.FindById((int)id);
+            if (existProduct is null) return NotFound();
+            if (request.NewImages != null && request.NewImages.Any())
+            {
+                List<ProductImage> images = new();
+                foreach (var item in request.NewImages)
+                {
+                    if (item?.Length > 1 * 1024 * 1024)
+                    {
+                        return StatusCode(StatusCodes.Status400BadRequest, "File size should not exceed 1 MB");
+                    }
 
+                    string[] allowedFileExtensions = { ".jpg", ".jpeg", ".png" };
+                    string createdImageName = await _fileService.SaveFileAsync(item, allowedFileExtensions);
+                    images.Add(new ProductImage { Name = createdImageName });
+                }
+
+                if (images.Any())
+                {
+                    images.FirstOrDefault().IsMain = true;
+                }
+
+                foreach (var oldImage in existProduct.ProductImages)
+                {
+                    _fileService.DeleteFile(oldImage.Name);
+                }
+
+                existProduct.ProductImages = images;
+            }
+
+            _mapper.Map(request, existProduct);
+
+            await _service.Update(existProduct);
+            return Ok();
         }
     }
 }
-
