@@ -38,6 +38,8 @@
     <None Remove="Helpers\EntityConfigurations\" />
     <None Remove="DTOs\Experts\" />
     <None Remove="DTOs\Infos\" />
+    <None Remove="DTOs\Category\" />
+    <None Remove="DTOs\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -54,5 +56,7 @@
     <Folder Include="Helpers\EntityConfigurations\" />
     <Folder Include="DTOs\Experts\" />
     <Folder Include="DTOs\Infos\" />
+    <Folder Include="DTOs\Category\" />
+    <Folder Include="DTOs\Products\" />
   </ItemGroup>
 </Project>

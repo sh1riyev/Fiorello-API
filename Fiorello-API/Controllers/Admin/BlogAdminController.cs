@@ -67,7 +67,7 @@ namespace Fiorello_API.Controllers.Admin
                 _fileService.DeleteFile(blog.Image);
                 request.Image = createdImageName;
             }
-			var updatedBlog = _service.Update(_mapper.Map<Blog>(request));
+			var updatedBlog = _service.Update(_mapper.Map(request,blog));
 			return Ok(updatedBlog);
         }
     }

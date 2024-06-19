@@ -54,8 +54,8 @@ namespace Fiorello_API.Controllers.Admin
         public async Task<IActionResult> Update([FromForm] InfoUpdateDto request, int? id)
         {
             if (id is null) return BadRequest();
-            var blog = await _service.FindById((int)id);
-            if (blog is null) return NotFound();
+            var info = await _service.FindById((int)id);
+            if (info is null) return NotFound();
 
             if (request.NewImage != null)
             {
@@ -65,10 +65,10 @@ namespace Fiorello_API.Controllers.Admin
                 }
                 string[] allowedFileExtentions = { ".jpg", ".jpeg", ".png" };
                 string createdImageName = await _fileService.SaveFileAsync(request.NewImage, allowedFileExtentions);
-                _fileService.DeleteFile(blog.Image);
+                _fileService.DeleteFile(info.Image);
                 request.Image = createdImageName;
             }
-            var updatedExpert = _service.Update(_mapper.Map<Info>(request));
+            var updatedExpert = _service.Update(_mapper.Map(request,info));
             return Ok(updatedExpert);
         }
     }

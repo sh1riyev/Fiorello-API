@@ -13,6 +13,8 @@ namespace Fiorello_API.Data
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Expert> Experts { get; set; }
         public DbSet<Info> Infos { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
